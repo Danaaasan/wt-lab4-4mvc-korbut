@@ -1,0 +1,36 @@
+@model WtLab4Korbut.Models.Account
+
+@{
+    ViewData["Title"] = "Детали счёта";
+}
+
+<div class="card shadow-sm rounded-4">
+    <div class="card-body">
+        <h2 class="card-title">Счёт @Model.Number</h2>
+        <hr />
+        <dl class="row">
+            <dt class="col-sm-3">ID</dt>
+            <dd class="col-sm-9">@Model.Id</dd>
+
+            <dt class="col-sm-3">Номер</dt>
+            <dd class="col-sm-9">@Model.Number</dd>
+
+            <dt class="col-sm-3">Владелец</dt>
+            <dd class="col-sm-9">@Model.OwnerName</dd>
+
+            <dt class="col-sm-3">Тип</dt>
+            <dd class="col-sm-9">@Model.Type</dd>
+
+            <dt class="col-sm-3">Баланс</dt>
+            <dd class="col-sm-9">@Model.Balance руб.</dd>
+
+            <dt class="col-sm-3">Ставка</dt>
+            <dd class="col-sm-9">@Model.InterestRate.ToString("P")</dd>
+
+            <dt class="col-sm-3">Активен</dt>
+            <dd class="col-sm-9">@(Model.IsActive ? "Да" : "Нет")</dd>
+        </dl>
+        <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning">Редактировать</a>
+        <a asp-action="Index" class="btn btn-secondary">Назад к списку</a>
+    </div>
+</div>

@@ -1,0 +1,43 @@
+@model List<WtLab4Korbut.Models.Account>
+
+@{
+    ViewData["Title"] = "Счета";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+        <h1 class="fw-bold">Список счетов</h1>
+        <p class="text-muted">Управление банковскими счетами</p>
+    </div>
+    <a asp-action="Create" class="btn btn-primary">Добавить счёт</a>
+</div>
+
+<form asp-action="Search" method="get" class="mb-3">
+    <div class="input-group">
+        <input type="text" name="query" class="form-control" placeholder="Поиск по владельцу..." value="@ViewBag.Query" />
+        <button type="submit" class="btn btn-outline-secondary">Найти</button>
+    </div>
+</form>
+
+<div class="row g-4">
+    @foreach (var account in Model)
+    {
+        <div class="col-12 col-md-6 col-lg-4">
+            <div class="card h-100 shadow-sm rounded-4">
+                <div class="card-body">
+                    <span class="badge bg-secondary mb-2">ID: @account.Id</span>
+                    <h5 class="card-title">@account.Number</h5>
+                    <p class="card-text">
+                        <strong>Владелец:</strong> @account.OwnerName<br />
+                        <strong>Тип:</strong> @account.Type<br />
+                        <strong>Баланс:</strong> @account.Balance руб.<br />
+                        <strong>Ставка:</strong> @account.InterestRate.ToString("P")<br />
+                        <strong>Активен:</strong> @(account.IsActive ? "Да" : "Нет")
+                    </p>
+                    <a asp-action="Details" asp-route-id="@account.Id" class="btn btn-outline-primary">Подробнее</a>
+                    <a asp-action="Edit" asp-route-id="@account.Id" class="btn btn-outline-secondary">Редактировать</a>
+                </div>
+            </div>
+        </div>
+    }
+</div>

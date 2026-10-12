@@ -1,0 +1,49 @@
+@model WtLab4Korbut.Models.Account
+
+@{
+    ViewData["Title"] = "Редактирование счёта";
+}
+
+<div class="card shadow-sm rounded-4">
+    <div class="card-body">
+        <h2 class="mb-4">Редактирование счёта</h2>
+        <form asp-action="Edit" method="post">
+            <input type="hidden" asp-for="Id" />
+            <div class="mb-3">
+                <label asp-for="Number" class="form-label">Номер счёта</label>
+                <input asp-for="Number" class="form-control" />
+                <span asp-validation-for="Number" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="OwnerName" class="form-label">Владелец</label>
+                <input asp-for="OwnerName" class="form-control" />
+                <span asp-validation-for="OwnerName" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="Type" class="form-label">Тип счёта</label>
+                <select asp-for="Type" class="form-select" asp-items="Html.GetEnumSelectList<WtLab4Korbut.Models.AccountType>()"></select>
+                <span asp-validation-for="Type" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="Balance" class="form-label">Баланс</label>
+                <input asp-for="Balance" class="form-control" />
+                <span asp-validation-for="Balance" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="InterestRate" class="form-label">Ставка</label>
+                <input asp-for="InterestRate" class="form-control" />
+                <span asp-validation-for="InterestRate" class="text-danger"></span>
+            </div>
+            <div class="form-check mb-3">
+                <input asp-for="IsActive" class="form-check-input" />
+                <label asp-for="IsActive" class="form-check-label">Активен</label>
+            </div>
+            <button type="submit" class="btn btn-primary">Сохранить</button>
+            <a asp-action="Index" class="btn btn-secondary">Назад</a>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
