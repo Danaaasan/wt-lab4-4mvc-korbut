@@ -46,21 +46,38 @@ body {
 
 /* ---------- Навбар ---------- */
 
+/* ---------- Навбар ---------- */
+
 .navbar-custom {
-    background: linear-gradient(90deg, #1c0f2e 0%, #2a1545 100%);
-    border-bottom: 1px solid var(--border-soft);
-    box-shadow: 0 4px 24px rgba(139, 92, 246, 0.15);
+    background: linear-gradient(90deg, #1c0f2e 0%, #2a1545 100%) !important;
+    border-bottom: 1px solid var(--border-soft) !important;
+    box-shadow: 0 4px 24px rgba(139, 92, 246, 0.15) !important;
     padding: 0.9rem 0;
 }
 
 .navbar-custom .navbar-brand {
     font-weight: 700;
-    font-size: 1.35rem;
+    font-size: 1.4rem;
+    color: var(--text-main) !important;
+    letter-spacing: 0.3px;
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+}
+
+.navbar-custom .navbar-brand .brand-icon {
     background: var(--gradient-primary);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    letter-spacing: 0.5px;
+    font-size: 1.1rem;
+}
+
+.navbar-custom .navbar-brand .brand-accent {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 .navbar-custom .nav-link {
@@ -83,7 +100,7 @@ body {
     box-shadow: 0 0 0 1px var(--border-purple);
 }
 
-.navbar-toggler {
+.navbar-custom .navbar-toggler {
     border-color: var(--border-soft);
 }
 

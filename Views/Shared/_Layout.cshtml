@@ -3,15 +3,17 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - Банк</title>
+    <title>@ViewData["Title"] — BankManager</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm">
+        <nav class="navbar navbar-expand-lg navbar-custom">
             <div class="container">
-                <a class="navbar-brand fw-bold" asp-controller="Home" asp-action="Index">Web Technologies</a>
+                <a class="navbar-brand" asp-controller="Home" asp-action="Index">
+                    <span class="brand-icon">◆</span> Bank<span class="brand-accent">Manager</span>
+                </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -28,14 +30,17 @@
             </div>
         </nav>
     </header>
+
     <main class="container py-4">
         @RenderBody()
     </main>
-    <footer class="border-top text-muted py-3 text-center">
+
+    <footer class="footer-custom">
         <div class="container">
-            &copy; @DateTime.Now.Year - WT-4 ASP.NET Core MVC
+            &copy; @DateTime.Now.Year — BankManager · Система управления клиентами банка
         </div>
     </footer>
+
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     @await RenderSectionAsync("Scripts", required: false)
