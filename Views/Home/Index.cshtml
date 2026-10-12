@@ -1,8 +1,55 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Главная";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="hero-section">
+    <div class="row align-items-center g-5">
+        <div class="col-12 col-lg-6">
+            <h1 class="hero-title">
+                Добро пожаловать в<br />
+                <span class="accent">банковскую систему</span>
+            </h1>
+            <p class="hero-subtitle">
+                Удобное управление счетами клиентов: просмотр, создание,
+                редактирование и поиск — всё в одном месте.
+            </p>
+            <div class="d-flex gap-3 flex-wrap mt-4">
+                <a asp-controller="Account" asp-action="Index" class="btn btn-primary btn-lg">
+                    Перейти к счетам →
+                </a>
+                <a asp-controller="Account" asp-action="Create" class="btn btn-outline-primary btn-lg">
+                    Открыть новый счёт
+                </a>
+            </div>
+        </div>
+        <div class="col-12 col-lg-6 text-center">
+            <img src="https://cdn-icons-png.flaticon.com/512/2830/2830284.png"
+                 alt="Банк"
+                 class="hero-image" />
+        </div>
+    </div>
+</div>
+
+<div class="row g-4 mt-5">
+    <div class="col-12 col-md-4">
+        <div class="feature-card">
+            <div class="feature-icon">💳</div>
+            <h5>Все счета</h5>
+            <p>Полный список счетов клиентов с быстрым доступом к деталям.</p>
+        </div>
+    </div>
+    <div class="col-12 col-md-4">
+        <div class="feature-card">
+            <div class="feature-icon">✏️</div>
+            <h5>Управление</h5>
+            <p>Создавайте, редактируйте и удаляйте счета в пару кликов.</p>
+        </div>
+    </div>
+    <div class="col-12 col-md-4">
+        <div class="feature-card">
+            <div class="feature-icon">🔎</div>
+            <h5>Поиск</h5>
+            <p>Быстрый поиск по имени владельца среди всех клиентов банка.</p>
+        </div>
+    </div>
 </div>
