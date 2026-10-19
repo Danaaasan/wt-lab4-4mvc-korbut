@@ -82,10 +82,19 @@ public class AccountController : Controller
         return View(account);
     }
 
+    // GET: /Account/Delete/5 — страница подтверждения удаления
+    [HttpGet]
+    public IActionResult Delete(int id)
+    {
+        var account = _accounts.FirstOrDefault(a => a.Id == id);
+        if (account == null) return NotFound();
+        return View(account);
+    }
+
     // POST: /Account/Delete/5
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public IActionResult Delete(int id)
+    public IActionResult DeleteConfirmed(int id)
     {
         var account = _accounts.FirstOrDefault(a => a.Id == id);
         if (account != null)

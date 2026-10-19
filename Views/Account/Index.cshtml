@@ -1,16 +1,14 @@
-@model List<WtLab4Korbut.Models.Account>
+@model IEnumerable<WtLab4Korbut.Models.Account>
 
 @{
     ViewData["Title"] = "Счета";
 }
 
-<div class="d-flex justify-content-between align-items-center mb-4">
-    <div>
-        <h1 class="fw-bold">Список счетов</h1>
-        <p class="text-muted">Управление банковскими счетами</p>
-    </div>
-    <a asp-action="Create" class="btn btn-primary">Добавить счёт</a>
-</div>
+<h1>Счета</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Создать новый счёт</a>
+</p>
 
 <form asp-action="Search" method="get" class="mb-3">
     <div class="input-group">
@@ -19,25 +17,34 @@
     </div>
 </form>
 
-<div class="row g-4">
-    @foreach (var account in Model)
-    {
-        <div class="col-12 col-md-6 col-lg-4">
-            <div class="card h-100 shadow-sm rounded-4">
-                <div class="card-body">
-                    <span class="badge bg-secondary mb-2">ID: @account.Id</span>
-                    <h5 class="card-title">@account.Number</h5>
-                    <p class="card-text">
-                        <strong>Владелец:</strong> @account.OwnerName<br />
-                        <strong>Тип:</strong> @account.Type<br />
-                        <strong>Баланс:</strong> @account.Balance руб.<br />
-                        <strong>Ставка:</strong> @account.InterestRate.ToString("P")<br />
-                        <strong>Активен:</strong> @(account.IsActive ? "Да" : "Нет")
-                    </p>
-                    <a asp-action="Details" asp-route-id="@account.Id" class="btn btn-outline-primary">Подробнее</a>
-                    <a asp-action="Edit" asp-route-id="@account.Id" class="btn btn-outline-secondary">Редактировать</a>
-                </div>
-            </div>
-        </div>
-    }
-</div>
+<table class="table">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.Number)</th>
+            <th>@Html.DisplayNameFor(model => model.OwnerName)</th>
+            <th>@Html.DisplayNameFor(model => model.Type)</th>
+            <th>@Html.DisplayNameFor(model => model.Balance)</th>
+            <th>@Html.DisplayNameFor(model => model.InterestRate)</th>
+            <th>@Html.DisplayNameFor(model => model.IsActive)</th>
+            <th>Действия</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.Number)</td>
+                <td>@Html.DisplayFor(modelItem => item.OwnerName)</td>
+                <td>@Html.DisplayFor(modelItem => item.Type)</td>
+                <td>@Html.DisplayFor(modelItem => item.Balance)</td>
+                <td>@Html.DisplayFor(modelItem => item.InterestRate)</td>
+                <td>@Html.DisplayFor(modelItem => item.IsActive)</td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@item.Id">Детали</a> |
+                    <a asp-action="Edit" asp-route-id="@item.Id">Редактировать</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Удалить</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

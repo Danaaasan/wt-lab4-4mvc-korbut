@@ -1,0 +1,38 @@
+@model WtLab4Korbut.Models.Account
+
+@{
+    ViewData["Title"] = "Удаление счёта";
+}
+
+<h1>Удаление счёта</h1>
+
+<h3>Вы уверены, что хотите удалить этот счёт?</h3>
+<div>
+    <h4>Счёт</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-3">@Html.DisplayNameFor(m => m.Number)</dt>
+        <dd class="col-sm-9">@Model.Number</dd>
+
+        <dt class="col-sm-3">@Html.DisplayNameFor(m => m.OwnerName)</dt>
+        <dd class="col-sm-9">@Model.OwnerName</dd>
+
+        <dt class="col-sm-3">@Html.DisplayNameFor(m => m.Type)</dt>
+        <dd class="col-sm-9">@Model.Type</dd>
+
+        <dt class="col-sm-3">@Html.DisplayNameFor(m => m.Balance)</dt>
+        <dd class="col-sm-9">@Model.Balance</dd>
+
+        <dt class="col-sm-3">@Html.DisplayNameFor(m => m.InterestRate)</dt>
+        <dd class="col-sm-9">@Model.InterestRate</dd>
+
+        <dt class="col-sm-3">@Html.DisplayNameFor(m => m.IsActive)</dt>
+        <dd class="col-sm-9">@Model.IsActive</dd>
+    </dl>
+
+    <form asp-action="DeleteConfirmed" method="post">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Удалить" class="btn btn-danger" />
+        <a asp-action="Index" class="btn btn-secondary">Отмена</a>
+    </form>
+</div>
