@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("wt-lab4-4mvc-korbut")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a6cdd46b81bcded276d3bc304fa32cfa88cc3858")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5ffa611444bcf372adc29e5880ed15ce8f79667b")]
 [assembly: System.Reflection.AssemblyProductAttribute("wt-lab4-4mvc-korbut")]
 [assembly: System.Reflection.AssemblyTitleAttribute("wt-lab4-4mvc-korbut")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
