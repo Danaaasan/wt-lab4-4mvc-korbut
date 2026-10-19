@@ -4,47 +4,59 @@
     ViewData["Title"] = "Счета";
 }
 
-<h1>Счета</h1>
+<div class="d-flex justify-content-between align-items-center mb-4 mt-3">
+    <h1 class="display-6 text-white">Счета</h1>
+    <a asp-action="Create" class="btn btn-primary" style="background: linear-gradient(45deg, #8a2be2, #ff1493); border: none; font-weight: 600;">
+        + Создать новый счёт
+    </a>
+</div>
 
-<p>
-    <a asp-action="Create" class="btn btn-primary">Создать новый счёт</a>
-</p>
-
-<form asp-action="Search" method="get" class="mb-3">
-    <div class="input-group">
-        <input type="text" name="query" class="form-control" placeholder="Поиск по владельцу..." value="@ViewBag.Query" />
-        <button type="submit" class="btn btn-outline-secondary">Найти</button>
+<form asp-action="Search" method="get" class="mb-4">
+    <div class="input-group" style="max-width: 500px;">
+        <input type="text" name="query" class="form-control bg-dark text-white border-secondary" placeholder="Поиск по владельцу..." value="@ViewBag.Query" style="box-shadow: none;" />
+        <button type="submit" class="btn btn-outline-light border-secondary">Найти</button>
     </div>
 </form>
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>@Html.DisplayNameFor(model => model.Number)</th>
-            <th>@Html.DisplayNameFor(model => model.OwnerName)</th>
-            <th>@Html.DisplayNameFor(model => model.Type)</th>
-            <th>@Html.DisplayNameFor(model => model.Balance)</th>
-            <th>@Html.DisplayNameFor(model => model.InterestRate)</th>
-            <th>@Html.DisplayNameFor(model => model.IsActive)</th>
-            <th>Действия</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
+<div class="table-responsive rounded-3 overflow-hidden shadow" style="background-color: #1e1e2f;">
+    <table class="table table-dark table-hover mb-0 align-middle">
+        <thead style="background-color: #2a2a40; color: #b3b3cc;">
             <tr>
-                <td>@Html.DisplayFor(modelItem => item.Number)</td>
-                <td>@Html.DisplayFor(modelItem => item.OwnerName)</td>
-                <td>@Html.DisplayFor(modelItem => item.Type)</td>
-                <td>@Html.DisplayFor(modelItem => item.Balance)</td>
-                <td>@Html.DisplayFor(modelItem => item.InterestRate)</td>
-                <td>@Html.DisplayFor(modelItem => item.IsActive)</td>
-                <td>
-                    <a asp-action="Details" asp-route-id="@item.Id">Детали</a> |
-                    <a asp-action="Edit" asp-route-id="@item.Id">Редактировать</a> |
-                    <a asp-action="Delete" asp-route-id="@item.Id">Удалить</a>
-                </td>
+                <th class="py-3 px-4">Номер счёта</th>
+                <th class="py-3">Владелец</th>
+                <th class="py-3">Тип</th>
+                <th class="py-3 text-end">Баланс</th>
+                <th class="py-3 text-end">Ставка</th>
+                <th class="py-3 text-center">Статус</th>
+                <th class="py-3 text-center px-4">Действия</th>
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td class="px-4 fw-bold">@Html.DisplayFor(modelItem => item.Number)</td>
+                    <td>@Html.DisplayFor(modelItem => item.OwnerName)</td>
+                    <td>
+                        @if (item.Type == WtLab4Korbut.Models.AccountType.Savings) { <span class="badge bg-info text-dark">Сберегательный</span> }
+                        else if (item.Type == WtLab4Korbut.Models.AccountType.Checking) { <span class="badge bg-success">Текущий</span> }
+                        else { <span class="badge bg-warning text-dark">Срочный вклад</span> }
+                    </td>
+                    <td class="text-end fw-bold">@item.Balance.ToString("N2") BYN</td>
+                    <td class="text-end text-muted">@((item.InterestRate * 100).ToString("0.##"))%</td>
+                    <td class="text-center">
+                        @if (item.IsActive) { <span class="text-success">● Активен</span> }
+                        else { <span class="text-danger">● Закрыт</span> }
+                    </td>
+                    <td class="text-center px-4">
+                        <div class="btn-group btn-group-sm">
+                            <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-outline-info">Детали</a>
+                            <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-outline-light">Изменить</a>
+                            <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-outline-danger">Удалить</a>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
